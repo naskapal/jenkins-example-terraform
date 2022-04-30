@@ -19,7 +19,11 @@ pipeline {
     }
     stage('terraform') {
       steps {
-        sh 'GOOGLE-APPLICATION-CREDENTIALS=${env.gcp_key}'
+      sh("""
+        GOOGLE-APPLICATION-CREDENTIALS=${env.gcp_key}
+      """)
+      }
+      steps {
         sh './terraformw init'
         sh './terraformw apply -auto-approve -no-color'
       }
