@@ -19,8 +19,10 @@ pipeline {
     }
     stage('terraform') {
       steps {
-        sh("echo $GCP_KEY > keyfile.json")
         sh './terraformw init'
+        sh("echo $GCP_KEY > keyfile.json")
+        sh('ls')
+        sh('cat keyfile.json')
         sh './terraformw apply -auto-approve -no-color'
       }
     }
