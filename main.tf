@@ -8,14 +8,14 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
   name        = "manual-build"
 
   source_to_build {
-    uri       = "https://hashicorp/terraform-provider-google-beta"
+    uri       = "https://github.com/naskapal/dummy-server"
     ref       = "refs/heads/main"
     repo_type = "GITHUB"
   }
 
   git_file_source {
-    path      = "cloudbuild.yaml"
-    uri       = "https://hashicorp/terraform-provider-google-beta"
+    path      = "Dockerfile"
+    uri       = "https://github.com/naskapal/dummy-server"
     revision  = "refs/heads/main"
     repo_type = "GITHUB"
   }
