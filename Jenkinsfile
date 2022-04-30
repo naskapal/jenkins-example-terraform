@@ -1,5 +1,8 @@
 pipeline {
   agent { label 'linux'}
+  environment {
+        GCP-KEY = credentials('gcp-key')
+  }
   options {
     skipDefaultCheckout(true)
   }
@@ -16,6 +19,7 @@ pipeline {
     }
     stage('terraform') {
       steps {
+        sh 'GOOGLE-APPLICATION-CREDENTIALS=${env.gcp-key}'
         sh './terraformw init'
         sh './terraformw apply -auto-approve -no-color'
       }
