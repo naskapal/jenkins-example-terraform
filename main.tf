@@ -2,6 +2,7 @@ provider "google" {
   project     = "kapal-private"
   region      = "asia-southeast2"
   zone        = "asia-southeast-2b"
+  credentials = file("keyfile.json")
 }
 
 resource "google_cloudbuild_trigger" "manual-trigger" {
